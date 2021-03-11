@@ -1,0 +1,2 @@
+# Data avalability
+A pre-trained DiLFM dictionary can be downloaded through Google drive https://drive.google.com/drive/folders/1_3eyvH5a0M0Cm55e-6SAO_VUsMio-Emd?usp=sharing, which includes 6 dictionary pairs for 6 different depths. These dictioanry pairs are trained through /data/train_bio_sample (which also needs to be downloads). Before you run demo_dictionary_LFM_embryo, make sure you have downloaded the dictionary pairs.
