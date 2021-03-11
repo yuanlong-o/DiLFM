@@ -12,7 +12,8 @@ Implementation for dictionary lgiht field microscope (DiLFM)
 ## Usage
 * To run the DiLFM demo
   1. Generate /src/gen_sphere_sample.m for train and test sample generation
-  2. Run demo_dictionary_LFM.m and check out_stack varaible for final output
+  2. Download example psf from Google drive https://drive.google.com/file/d/1XtifZ0tZmhtqDTLShV8mhZz-lIJXyH9y/view?usp=sharing
+  3. Run demo_dictionary_LFM.m and check out_stack varaible for final output
 
 ## Instructions
 * To train your own DiLFM model
