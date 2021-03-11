@@ -9,7 +9,7 @@ addpath(genpath('ext'))
 train_data_path = 'data\\train_bead_sample';
 test_data_path = 'data\\test_bead_sample';
 
-input_psf_path = '..\\PSF';
+input_psf_path = 'PSF';
 psf_file_name = 'PSF_M_10_NA_0.5_d_750.0_from_-100_to_100_zspac_10_Nnum_7_OSR_3.mat';
 %% run RL for training data
 gen_RL_capture(input_psf_path, psf_file_name, train_data_path) % training

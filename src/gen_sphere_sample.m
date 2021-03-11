@@ -5,7 +5,7 @@ addpath(genpath('..\\ext'))
 %% this file is used to generate a 3D sphere sample 
 %  last update: 4/26/2020. 
 
-file_path = '..\\..\\psf';
+file_path = '..\\psf';
 file_name = 'PSF_M_10_NA_0.5_d_750.0_from_-100_to_100_zspac_10_Nnum_7_OSR_3.mat';
 load(sprintf('%s/%s', file_path, file_name));
 
