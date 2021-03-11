@@ -17,5 +17,5 @@ Implementation for dictionary lgiht field microscope (DiLFM)
 ## Instructions
 * To train your own DiLFM model
   1. Collect trainning data that is similar with your target data
-  2. Run virtual LFM propagation and RL deconvolution to get low-resolution results
+  2. Run virtual LFM propagation and RL deconvolution to get low-resolution results (this can be done through /src/gen_RL_capture.m)
   3. Run lfm_dictionary_training.m for high- and low-resolution pair training
