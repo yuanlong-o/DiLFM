@@ -48,7 +48,10 @@ TV_config.TV_maxIter = 10;
 dictionary_name = 'data\\Learned_dictionary_size_1500_Tdata_5_peak_4_cut_0.01_overlap_9';
 out_stack = lfm_dictionary_test(input_psf_path, psf_file_name, TV_config, dictionary_name, lores_stack, ksvd_conf.Tdata);
 
-saveastiff(im2uint16(out_stack / max(out_stack(:))), 'test_recon.tif');
+if exist('.\\output\\beads.tif' )
+    delete ('.\\output\\beads.tif' );
+end
+saveastiff(im2uint16(out_stack / max(out_stack(:))), '.\\output\\beads.tif');
 %% plot
 figure, subplot(1, 2, 1), imshow(max(lores_stack, [], 3), []), title('RL')
 subplot(1, 2, 2), imshow(max(out_stack, [], 3), []), title('DiLFM')

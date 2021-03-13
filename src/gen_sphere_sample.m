@@ -98,6 +98,9 @@ for i = 1 : N_sphere
 end
 sample = double(sample > 0.1);
 % save
+if exist(sprintf('%s\\sample_%d.tif', output_dir_train, kk) )
+    delete (sprintf('%s\\sample_%d.tif', output_dir_train, kk) );
+end
 saveastiff(im2uint16(sample / max(sample(:))), sprintf('%s\\sample_%d.tif', ...
     output_dir_train, kk))
 
@@ -152,6 +155,9 @@ for i = 1 : N_sphere
 end
 sample = double(sample > 0.1);
 % save
+if exist(sprintf('%s\\sample_%d.tif', output_dir_test, kk) )
+    delete (sprintf('%s\\sample_%d.tif', output_dir_test, kk) );
+end
 saveastiff(im2uint16(sample / max(sample(:))), sprintf('%s\\sample_%d.tif', ...
     output_dir_test, kk))
 end

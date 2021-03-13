@@ -19,8 +19,8 @@ TV_maxIter = 10;
 % output_path = sprintf('Drosophila_by_dictionary_size_1000_Tdata_5_peak_7_TV_lambda_%g', TV_lambda);
 
 
-dictionary_name = 'data\\Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4';
-lores_stack = loadtiff('data\\test_bio_sample\\recon_40x_embryo_stack.tif');
+dictionary_name = '.\\data\\Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4';
+lores_stack = loadtiff('.\\data\\test_bio_sample\\recon_40x_embryo_stack.tif');
 lores_stack = double(lores_stack);
 output_path = '.';
 mkdir(output_path)
@@ -66,7 +66,10 @@ for test_depth = 1: 6
     fprintf('.');
     figure(101), imshow(result, [])
 end
-saveastiff(im2uint16(out_stack), 'embryo.tif')
+if exist('.\\output\\embryo.tif' )
+    delete ('.\\output\\embryo.tif' );
+end
+saveastiff(im2uint16(out_stack), '.\\output\\embryo.tif')
 %% reconstruction
 function imgs = modcrop(imgs, modulo)
 % imgs as a cell array, since different image might have different size.

@@ -34,6 +34,9 @@ for i=1:maxIter
     
     Xguess = gather(Xguess);
 %     save(sprintf('recon_%s_iter_%d_lambda.mat', LFM_img_name, maxIter), 'Xguess')
+    if exist(sprintf('%s\\recon_iter_%d.tiff', output_path, i) )
+        delete (sprintf('%s\\recon_iter_%d.tiff', output_path, i) );
+    end
     saveastiff(im2uint16(Xguess / max(Xguess(:))), sprintf('%s\\recon_iter_%d.tiff', output_path, i))
 end
 %% utility function

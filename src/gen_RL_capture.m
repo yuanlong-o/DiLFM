@@ -35,6 +35,9 @@ for k = 1 : length(tif_file)
     % mod and resize
     stack = modcrop(stack, Nnum);
     stack = imresize3(stack, [size(stack, 1), size(stack, 2), size(H, 5)]);
+    if exist(sprintf('%s\\%s', output_path3, base_filename) )
+        delete (sprintf('%s\\%s', output_path3, base_filename) );
+    end
     saveastiff(im2uint16(stack), sprintf('%s\\%s', output_path3, base_filename))
     
 %     LFM capture
@@ -49,11 +52,17 @@ for k = 1 : length(tif_file)
     LFM_cap = forwardProjectGPU(H, stack, zeroImageEx, exsize);
     LFM_cap = gather(LFM_cap);
     LFM_cap = LFM_cap / max(LFM_cap(:));
+    if exist(sprintf('%s\\%s', output_path2, base_filename) )
+        delete (sprintf('%s\\%s', output_path2, base_filename) );
+    end
     saveastiff(im2uint16(LFM_cap), sprintf('%s\\%s', output_path2, base_filename))
 
     % LFM recon
     Xguess = recon_LFM(LFM_cap, H, Ht, LFM_run, gpuFlag, []);  
     Xguess = gather(Xguess);
+    if exist(sprintf('%s\\%s', output_path1, base_filename) )
+        delete (sprintf('%s\\%s', output_path1, base_filename) );
+    end
     saveastiff(im2uint16(Xguess/ max(Xguess(:))), sprintf('%s\\%s', output_path1, base_filename))
 end
 end

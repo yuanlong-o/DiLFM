@@ -41,7 +41,7 @@ for test_depth = 1: 21
     % histogram matching
     result = result / mean(result(:)) * mean_lores;
     out_stack(:, :, test_depth) = result;
-    saveastiff(im2uint16(result / max(result(:))), sprintf('depth_%d.tiff', test_depth))
+%     saveastiff(im2uint16(result / max(result(:))), sprintf('depth_%d.tiff', test_depth))
 %     fprintf('.');
 %     figure(101), imshow(result, [])
 end
