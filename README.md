@@ -17,7 +17,7 @@ Implementation for dictionary lgiht field microscope (DiLFM)
 ### To run DiLFM with embryo data
   1. Collect pre-trained dictionary data in /data/Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4. You can also train your own dataset with your LFM psf following Instructions downbelow
   2. Run demo_dictionary_LFM_embryo.m and check the output. You can compare the results with ours in /output/embryo.tif
-<img src="images/embryo.png" width="800" align="middle">
+<img src="img/embryo.png" width="800" align="middle">
 
 ## Instructions
 * To train your own DiLFM model
