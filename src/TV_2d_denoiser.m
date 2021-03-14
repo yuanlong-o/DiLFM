@@ -101,6 +101,9 @@ for i = 1 : maxIter
     end
  
 end % end of the while
+% Bo Xiong 06/18/2020
+x_new = imhistmatch(x_new,observ);
+% Bo Xiong 06/18/2020
 end
 % figure, subplot(1, 2, 1), imshow(observ, []), title('original')
 % subplot(1, 2,2), imshow(x_new, []), title('denoised')
