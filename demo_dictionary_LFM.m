@@ -40,7 +40,7 @@ lfm_dictionary_training(input_psf_path, psf_file_name, threshold, conf, ksvd_con
 gen_RL_capture(input_psf_path, psf_file_name, test_data_path) % training
 lores_stack = loadtiff(sprintf('%s\\LMF_recon\\sample_1.tif', test_data_path));
 lores_stack = double(lores_stack );
-%% run scale up
+%% run dictionary evaluation
 clc
 TV_config.TV_enable = false;
 TV_config.TV_lambda= 1;

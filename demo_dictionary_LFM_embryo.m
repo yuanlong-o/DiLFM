@@ -25,7 +25,7 @@ lores_stack = double(lores_stack);
 output_path = '.';
 mkdir(output_path)
 TV_enable = false;
-%% scale up
+%% dictionary
 for test_depth = 1: 6
     test_depth
     % load specific configuration for different depths
