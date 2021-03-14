@@ -10,14 +10,14 @@ Implementation for dictionary lgiht field microscope (DiLFM)
   * Matlab-compatible CUDA driver (for LFM deconvolution)
 
 ## Usage
-### To run the DiLFM demo
+### Run the DiLFM demo with virtual beads
   1. Generate /src/gen_sphere_sample.m for train and test sample generation
   2. Prepare light-field microscope PSF generation function (one example can be found in /PSF file, while this repo has already prepared a small one for you)
   3. Run demo_dictionary_LFM.m and check out_stack varaible for final output. You can comapre the results with ours in /output/bead
 <img src="img/bead.png" width="600" align="middle">
 
-### To run DiLFM with embryo data
-  1. Collect pre-trained dictionary data in /data/Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4. You can also train your own dataset with your LFM psf following Instructions downbelow
+### Run DiLFM with embryo data
+  1. Collect pre-trained dictionary data in /data/Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4. You can also train your own dataset with your LFM psf following **Instructions** downbelow
   2. Run demo_dictionary_LFM_embryo.m and check the output. You can compare the results with ours in /output/embryo.tif
 <img src="img/embryo.png" width="800" align="middle">
 
