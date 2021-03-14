@@ -1,18 +1,23 @@
-function out_stack = lfm_dictionary_test(input_psf_path, file_name, TV_config, dictionary_name, lores_stack, Tdata)
+function out_stack = lfm_dictionary_test(input_psf_path, file_name, TV_config, ...
+        dictionary_name, lores_stack, Tdata, depth_range)
 % for dictionary test
 %  last udpate: 3/11/2021.
 load(sprintf('%s/%s', input_psf_path, file_name));
 
+if isempty(depth_range) || ~exist('depth_range','var')
+    depth_range = [1, size(H, 5)];
+end
+
 % dictionary_name = 'Learned_dictionary_size_1500_Tdata_5_peak_4_cut_0.01_overlap_9';
-assert(size(lores_stack, 3) == size(H, 5))
+assert(size(lores_stack, 3) == (depth_range(2) - depth_range(1) + 1))
 % mkdir(output_path)
 %% scale up
-for test_depth = 1: 21
+for test_depth = depth_range(1) : depth_range(2)
     % load specific configuration for different depths
     conf = importdata(sprintf('%s\\depth_%d.mat', dictionary_name, test_depth ));
     
     % sample
-    lores = lores_stack(:, :, test_depth);
+    lores = lores_stack(:, :, test_depth - depth_range(1) + 1);
     lores = double(lores);
     lores = lores / max(lores_stack(:));
     mean_lores = mean(lores(:));
@@ -40,7 +45,7 @@ for test_depth = 1: 21
     
     % histogram matching
     result = result / mean(result(:)) * mean_lores;
-    out_stack(:, :, test_depth) = result;
+    out_stack(:, :, test_depth - depth_range(1) + 1) = result;
 %     saveastiff(im2uint16(result / max(result(:))), sprintf('depth_%d.tiff', test_depth))
 %     fprintf('.');
 %     figure(101), imshow(result, [])

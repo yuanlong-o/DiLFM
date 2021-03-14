@@ -1,11 +1,17 @@
 function lfm_dictionary_training(input_psf_path, file_name, threshold, conf, ksvd_conf, ...
-                                high_res_dir, low_res_dir)
+                                high_res_dir, low_res_dir, depth_range)
+                            
+                            
 %  last update: 4/10/2020. YZ
 
 % input_psf_path = '..\\..\\..\\data_from_xb\\psf\\40x water';
 % file_name = 'PSF_M_47_NA_1.0_fobj_3.55mm_d_2100.0_from_-30_to_30_zspac_2_Nnum_13_OSR_3.mat';
 load(sprintf('%s/%s', input_psf_path, file_name));
 
+
+if isempty(depth_range) || ~exist('depth_range','var')
+    depth_range = [1, size(H, 5)];
+end
 %% parameters
 % threshold = 0.01;
 % 
@@ -37,17 +43,19 @@ scale(ceil(depth_N / 2)) = peak;
 file_pattern = fullfile(high_res_dir, '*.tif');
 tiff_file = dir(file_pattern);
 
-high_res_img_cell = cell(size(H, 5), length(tiff_file));
-low_res_img_cell = cell(size(H, 5), length(tiff_file));
+high_res_img_cell = cell(depth_range(2) - depth_range(1) + 1, length(tiff_file));
+low_res_img_cell = cell(depth_range(2) - depth_range(1) + 1, length(tiff_file));
 
 for k = 1 : length(tiff_file)
     base_filename = tiff_file(k).name;
     high_res_stack = double(loadtiff(sprintf('%s\\%s',high_res_dir, base_filename)))/ 65536;
     low_res_stack = double(loadtiff(sprintf('%s\\%s',low_res_dir, base_filename))) / 65536;
     
-    for kk = 1 : size(H ,5)
-        high_res_img_cell{kk, k} = high_res_stack(:, :, kk);
-        low_res_img_cell{kk, k} = low_res_stack(:, :, kk);
+    ind_depth = 1;
+    for kk = depth_range(1) : depth_range(2)
+        high_res_img_cell{ind_depth, k} = high_res_stack(:, :, kk);
+        low_res_img_cell{ind_depth, k} = low_res_stack(:, :, kk);
+        ind_depth = ind_depth + 1;
     end
 
 end
@@ -56,13 +64,13 @@ output_folder = sprintf('data\\Learned_dictionary_size_%d_Tdata_%d_peak_%d_cut_%
     ksvd_conf.dictsize, ksvd_conf.Tdata,peak, threshold, conf.overlap(1));
 mkdir(output_folder)
 %% learn the dictionary depth by depth
-for ii = 1 : depth_N
+for ii = depth_range(1) : depth_range(2)
     ii
     % low res image
-    lores =low_res_img_cell(ii, :);
+    lores =low_res_img_cell(ii - depth_range(1) + 1, :);
     
 	% high res image
-    hires = high_res_img_cell(ii, :); % here since the low res image has a crop
+    hires = high_res_img_cell(ii - depth_range(1) + 1, :); % here since the low res image has a crop
   
     % convolutional filters
     conf.scale = scale(ii);
