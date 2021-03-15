@@ -9,7 +9,7 @@ addpath(genpath('ext'))
 train_data_path = 'data\\train_bio_sample';
 test_data_path = 'data\\test_bio_sample';
 
-input_psf_path = '..\\data_from_xb\\psf\\40x water';
+input_psf_path = 'PSF';
 psf_file_name = 'PSF_M_47_NA_1.0_fobj_3.55mm_d_2100.0_from_-30_to_30_zspac_2_Nnum_13_OSR_3.mat';
 %% run RL for training data
 gen_RL_capture(input_psf_path, psf_file_name, train_data_path) % training
@@ -47,4 +47,7 @@ TV_config.TV_maxIter = 10;
 dictionary_name = 'data\\Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4';
 out_stack = lfm_dictionary_test(input_psf_path, psf_file_name, TV_config, dictionary_name, lores_stack, ksvd_conf.Tdata, depth_range);
 
-saveastiff(im2uint16(out_stack / max(out_stack(:))), 'test_recon.tif');
+if exist('.\\output\\embryo.tif' )
+    delete ('.\\output\\embryo.tif' );
+end
+saveastiff(im2uint16(out_stack / max(out_stack(:))), '.\\output\\embryo.tif');
