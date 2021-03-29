@@ -17,11 +17,11 @@ Implementation for dictionary lgiht field microscope (DiLFM)
 <img src="img/bead.png" width="600" align="middle">
 
 ### Run DiLFM with embryo data
-* use pretrained dictionary
+* Use pretrained dictionary
   1. Collect pre-trained dictionary data in /data/Learned_dictionary_size_1500_Tdata_5_peak_7_cut_0.01_overlap_4. 
   2. Run demo_dictionary_LFM_embryo.m and check the output. You can compare the results with ours in /output/embryo.tif
 
-* use self-trained dictionary
+* Use self-trained dictionary
   1. Collect training dataset following data/train_bio_sample/README.md
   2. Collect training PSF following embryo_psf.md
   3. Run demo_dictionary_LFM_embryo.m and check the output. You can compare the results with ours in /output/embryo.tif
