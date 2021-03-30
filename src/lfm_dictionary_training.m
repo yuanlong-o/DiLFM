@@ -9,7 +9,9 @@ function lfm_dictionary_training(input_psf_path, file_name, threshold, conf, ksv
 load(sprintf('%s/%s', input_psf_path, file_name));
 
 
-if isempty(depth_range) || ~exist('depth_range','var')
+if ~exist('depth_range','var')
+    depth_range = [1, size(H, 5)];
+elseif isempty(depth_range)
     depth_range = [1, size(H, 5)];
 end
 %% parameters

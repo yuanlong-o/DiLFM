@@ -4,7 +4,9 @@ function out_stack = lfm_dictionary_test(input_psf_path, file_name, TV_config, .
 %  last udpate: 3/11/2021.
 load(sprintf('%s/%s', input_psf_path, file_name));
 
-if isempty(depth_range) || ~exist('depth_range','var')
+if ~exist('depth_range','var')
+    depth_range = [1, size(H, 5)];
+elseif isempty(depth_range)
     depth_range = [1, size(H, 5)];
 end
 
