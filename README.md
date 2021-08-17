@@ -37,7 +37,7 @@ Implementation for dictionary lgiht field microscope (DiLFM)
   3. Run lfm_dictionary_training.m for high- and low-resolution pair training
 
 
-### Main paper
+## Main paper
 
 ```
 @article{zhang2021dilfm,
