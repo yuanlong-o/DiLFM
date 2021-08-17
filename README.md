@@ -1,5 +1,7 @@
 # DiLFM
 
+<img src="https://github.com/flatironinstitute/CaImAn/blob/master/docs/LOGOS/Caiman_logo_FI.png" width="500" align="center">
+
 Implementation for dictionary lgiht field microscope (DiLFM)
 
 ## System requirements
@@ -35,3 +37,17 @@ Implementation for dictionary lgiht field microscope (DiLFM)
   3. Run lfm_dictionary_training.m for high- and low-resolution pair training
 
 
+### Main paper
+
+```
+@article{zhang2021dilfm,
+  title={DiLFM: an artifact-suppressed and noise-robust light-field microscopy through dictionary learning},
+  author={Zhang, Yuanlong and Xiong, Bo and Zhang, Yi and Lu, Zhi and Wu, Jiamin and Dai, Qionghai},
+  journal={Light: Science \& Applications},
+  volume={10},
+  number={1},
+  pages={1--12},
+  year={2021},
+  publisher={Nature Publishing Group}
+}
+```
