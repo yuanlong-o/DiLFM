@@ -1,6 +1,6 @@
 # DiLFM
 
-<img src="img/figure.png" width="1000" align="center">
+<img src="img/cover_DiLFM.png" width="1000" align="center">
 
 Implementation for dictionary lgiht field microscope (DiLFM)
 
