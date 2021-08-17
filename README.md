@@ -1,6 +1,6 @@
 # DiLFM
 
-<img src="https://github.com/flatironinstitute/CaImAn/blob/master/docs/LOGOS/Caiman_logo_FI.png" width="500" align="center">
+<img src="img/figure.png" width="1000" align="center">
 
 Implementation for dictionary lgiht field microscope (DiLFM)
 
